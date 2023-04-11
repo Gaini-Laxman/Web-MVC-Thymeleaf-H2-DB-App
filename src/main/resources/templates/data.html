@@ -28,14 +28,14 @@
 	<p th:text="${msg}" class="text-danger"></p>
 
 
-<div class="pt-3 pb-3">
-	<a href="/" class="btn btn-primary">Add New Product</a>
-</div>
+	<div class="pt-3 pb-3">
+		<a href="/" class="btn btn-primary">Add New Product</a>
+	</div>
 
-	<table class="table table-striped table-bordered table-hover pt-3 pb-3"  >
-	
+	<table class="table table-striped table-bordered table-hover pt-3 pb-3">
+
 		<thead>
-		
+
 			<tr>
 				<th>Product Id</th>
 				<th>Product Name</th>
@@ -43,26 +43,28 @@
 				<th>Product Quantity</th>
 				<th>Action</th>
 			</tr>
-		
+
 		</thead>
 		</div>
 		<tbody>
-		
+
 			<tr th:each="p: ${products}">
 				<td th:text="${p.pid}" />
 				<td th:text="${p.name}" />
 				<td th:text="${p.price}" />
 				<td th:text="${p.quantity}" />
 				<td><a th:href="@{/delete?(pid=${p.pid})}"
-					class="btn btn-danger" onClick="return deleteConfirm()">Delete</a></td>
+					class="btn btn-danger" onClick="return deleteConfirm()">Delete</a>
+
+					<a th:href="@{/edit?(pid=${p.pid})}" class="btn btn-info">Edit</a></td>
 			</tr>
-		
-       
+
+
 			<tr>
 				<td th:if="${products == null or products.isEmpty()}" colspan="5"
 					class="text-center">No Recods Found</td>
 			</tr>
-        
+
 		</tbody>
 
 	</table>
